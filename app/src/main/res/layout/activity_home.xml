@@ -19,7 +19,11 @@
             android:id="@+id/pdButton"
             android:background="#ffffff"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            android:contextClickable="false"
+            android:enabled="true"
+            android:longClickable="true" />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
