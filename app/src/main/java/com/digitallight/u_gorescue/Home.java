@@ -81,7 +81,6 @@ public class Home extends Activity implements
 
             Geocoder geocoder = new Geocoder(this);
             try {
-                addressList = geocoder.getFromLocation(lat, lang, 1);
             } catch (IOException e) {
                 Toast.makeText(getApplicationContext(), "Lokasi tidak ada ", Toast.LENGTH_SHORT).show();
             }
