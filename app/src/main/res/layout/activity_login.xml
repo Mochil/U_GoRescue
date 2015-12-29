@@ -23,7 +23,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="490dp">
+        android:layout_height="490dp"
+        android:id="@+id/login_form">
 
         <Button
             android:id="@+id/email_sign_in_button"
