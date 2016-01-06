@@ -47,6 +47,7 @@ public class RegActivity extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pendaftaran);
+        getSupportActionBar().hide();
 
         //Initializing Views
         editTextName = (EditText) findViewById(R.id.editTextName);
