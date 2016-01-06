@@ -81,6 +81,7 @@ public class Home extends Activity implements
 
             Geocoder geocoder = new Geocoder(this);
             try {
+                addressList = geocoder.getFromLocation(lat, lang, 1);
             } catch (IOException e) {
                 Toast.makeText(getApplicationContext(), "Lokasi tidak ada ", Toast.LENGTH_SHORT).show();
             }
@@ -91,6 +92,7 @@ public class Home extends Activity implements
                     address.getThoroughfare() + ", " + address.getSubAdminArea() +
                     " dengan koordinat lat : " + lat + " dan long : " + lang;
             Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+
         } else {
             Toast.makeText(getApplicationContext(), "Tidak ada koneksi", Toast.LENGTH_SHORT).show();
         }
