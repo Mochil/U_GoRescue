@@ -66,13 +66,17 @@ public class Home extends Activity implements
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.pdButton:
-                TampilLokasi();
+                try {
+                    TampilLokasi();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 //                Toast.makeText(getApplicationContext(), "Test Button", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
-    public void TampilLokasi(){
+    public void TampilLokasi() throws IOException {
         if (mGoogleApiClient.isConnected()) {
             Location location = new Location(LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient));
             double lat = location.getLatitude();
@@ -80,10 +84,8 @@ public class Home extends Activity implements
             List<Address> addressList = null;
 
             Geocoder geocoder = new Geocoder(this);
-            try {
-            } catch (IOException e) {
-                Toast.makeText(getApplicationContext(), "Lokasi tidak ada ", Toast.LENGTH_SHORT).show();
-            }
+            addressList = geocoder.getFromLocation(lat, lang, 1);
+
 
             Address address = addressList.get(0);
 
