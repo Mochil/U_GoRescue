@@ -12,105 +12,109 @@
     android:background="@color/merah"
     tools:context="com.digitallight.u_gorescue.RegActivity">
 
-    <TextView
-        android:text="Registrasi Go-Rescue"
-        android:textSize="20dp"
-        android:paddingBottom="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih" />
+    <include layout="@layout/navigation_bar_pendaftaran"/>
 
-    <TextView
-        android:text="name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"/>
-
-    <EditText
-        android:id="@+id/editTextName"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"
-        android:backgroundTint="@color/putih"/>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:text="user name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"
-        android:backgroundTint="@color/putih"/>
+            <TextView
+                android:text="name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"/>
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"
+                android:backgroundTint="@color/putih"/>
+
+            <TextView
+                android:text="user name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"
+                android:backgroundTint="@color/putih"/>
 
 
-    <EditText
-        android:id="@+id/editTextUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"
-        android:backgroundTint="@color/putih"/>
+            <EditText
+                android:id="@+id/editTextUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"
+                android:backgroundTint="@color/putih"/>
 
-    <TextView
-        android:text="password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"
-        android:backgroundTint="@color/putih"/>
+            <TextView
+                android:text="password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"
+                android:backgroundTint="@color/putih"/>
 
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"
-        android:backgroundTint="@color/putih"/>
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"
+                android:backgroundTint="@color/putih"/>
 
-    <TextView
-        android:text="ktp/sim/no identitas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"
-        android:backgroundTint="@color/putih"/>
+            <TextView
+                android:text="ktp/sim/no identitas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"
+                android:backgroundTint="@color/putih"/>
 
-    <EditText
-        android:id="@+id/editNoIdentitas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"
-        android:backgroundTint="@color/putih"/>
+            <EditText
+                android:id="@+id/editNoIdentitas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"
+                android:backgroundTint="@color/putih"/>
 
-    <TextView
-        android:text="email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"
-        android:backgroundTint="@color/putih"/>
+            <TextView
+                android:text="email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"
+                android:backgroundTint="@color/putih"/>
 
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:inputType="textEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"
-        android:backgroundTint="@color/putih"/>
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"
+                android:backgroundTint="@color/putih"/>
 
-    <TextView
-        android:text="Telepon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"
-        android:backgroundTint="@color/putih"/>
+            <TextView
+                android:text="Telepon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"
+                android:backgroundTint="@color/putih"/>
 
-    <EditText
-        android:id="@+id/editTextTelepon"
-        android:inputType="phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/putih"
-        android:backgroundTint="@color/putih"/>
+            <EditText
+                android:id="@+id/editTextTelepon"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/putih"
+                android:backgroundTint="@color/putih"/>
 
-    <Button
-        android:id="@+id/buttonRegister"
-        android:text="Register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/buttonRegister"
+                android:text="Register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

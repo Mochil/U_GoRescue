@@ -1,6 +1,7 @@
 package com.digitallight.u_gorescue;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,21 +12,18 @@ import android.widget.Toast;
 
 import com.google.gson.JsonParser;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 /**
  * Created by Pena Orange on 06/01/2016.
  */
@@ -49,6 +47,7 @@ public class RegActivity extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_pendaftaran);
         getSupportActionBar().hide();
 
+        ButterKnife.bind(this);
         //Initializing Views
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
@@ -123,6 +122,12 @@ public class RegActivity extends AppCompatActivity implements View.OnClickListen
         );
     }
 
+    @OnClick(R.id.btnBack)
+    public void back() {
+        Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 //    public class input extends AsyncTask<String, String, String>{
 //    String success;
 //
