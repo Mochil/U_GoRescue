@@ -23,17 +23,17 @@ public class LoginActivity extends AppCompatActivity {
         et1 = (EditText) findViewById(R.id.editText);
         et2 = (EditText) findViewById(R.id.editText2);
         et3 = (TextView) findViewById(R.id.TextBelumDaftar);
-        Toast.makeText(getApplicationContext(), "user001 || user1234", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "user001 || user1234", Toast.LENGTH_SHORT).show();
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (et1.getText().toString().equals("user001")&& et2.getText().toString().equals("user1234")){
-                    Intent intent = new Intent(LoginActivity.this,Home.class);
+//                if (et1.getText().toString().equals("user001")&& et2.getText().toString().equals("user1234")){
+                    Intent intent = new Intent(LoginActivity.this,MainTest.class);
                     startActivity(intent);
                     finish();
-                }else {
-                    Toast.makeText(getApplicationContext(), "Username dan Password Tidak Cocok", Toast.LENGTH_SHORT).show();
-                }
+//                }else {
+//                    Toast.makeText(getApplicationContext(), "Username dan Password Tidak Cocok", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 

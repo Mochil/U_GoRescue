@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:text="name"
+                android:text="Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/putih"/>
@@ -36,7 +36,7 @@
                 android:backgroundTint="@color/putih"/>
 
             <TextView
-                android:text="user name"
+                android:text="Username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/putih"
@@ -51,7 +51,7 @@
                 android:backgroundTint="@color/putih"/>
 
             <TextView
-                android:text="password"
+                android:text="Password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/putih"
@@ -67,7 +67,7 @@
                 android:backgroundTint="@color/putih"/>
 
             <TextView
-                android:text="ktp/sim/no identitas"
+                android:text="KTP/SIM/No Identitas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/putih"
@@ -81,7 +81,7 @@
                 android:backgroundTint="@color/putih"/>
 
             <TextView
-                android:text="email"
+                android:text="Email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/putih"

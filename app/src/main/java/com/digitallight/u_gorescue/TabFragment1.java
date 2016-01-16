@@ -1,12 +1,15 @@
 package com.digitallight.u_gorescue;
 
-import android.app.Activity;
-import android.app.Fragment;
+/**
+ * Created by Pena Orange on 16/01/2016.
+ */
+
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +18,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -24,11 +26,9 @@ import com.google.android.gms.maps.UiSettings;
 import java.io.IOException;
 import java.util.List;
 
-
-public class Home extends Fragment implements
+public class TabFragment1 extends Fragment implements
         GoogleApiClient.OnConnectionFailedListener,
-        OnMapReadyCallback,
-        View.OnClickListener {
+        View.OnClickListener, View.OnLongClickListener {
 
     private Button ButtonPD;
     private GoogleMap mMap;
@@ -36,18 +36,15 @@ public class Home extends Fragment implements
     private GoogleApiClient mGoogleApiClient;
     public static final String SOCIAL_NETWORK_TAG = "SocialIntegrationMain.SOCIAL_NETWORK_TAG";
 
-    private static final LocationRequest REQUEST = LocationRequest.create()
-            .setInterval(5000)         // 5 seconds
-            .setFastestInterval(16)    // 16ms = 60fps
-            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View pangdar = inflater.inflate(R.layout.activity_home, container, false);
 
         ButtonPD = (Button) pangdar.findViewById(R.id.pdButton);
-        ButtonPD.setOnClickListener(this);
+//        ButtonPD.setOnClickListener(this);
+        ButtonPD.setOnLongClickListener(this);
 
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addApi(LocationServices.API)
@@ -59,25 +56,20 @@ public class Home extends Fragment implements
     }
 
     @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.pdButton:
-                TampilLokasi();
+                tampilLokasi();
                 break;
         }
     }
 
-    public void TampilLokasi(){
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
+    public void tampilLokasi(){
         if (mGoogleApiClient.isConnected()) {
             Location location = new Location(LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient));
             double lat = location.getLatitude();
@@ -112,4 +104,9 @@ public class Home extends Fragment implements
         }
     }
 
+    @Override
+    public boolean onLongClick(View v) {
+        tampilLokasi();
+        return false;
+    }
 }
