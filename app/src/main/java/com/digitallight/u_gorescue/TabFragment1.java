@@ -43,7 +43,6 @@ public class TabFragment1 extends Fragment implements
         View pangdar = inflater.inflate(R.layout.activity_home, container, false);
 
         ButtonPD = (Button) pangdar.findViewById(R.id.pdButton);
-//        ButtonPD.setOnClickListener(this);
         ButtonPD.setOnLongClickListener(this);
 
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
@@ -70,30 +69,32 @@ public class TabFragment1 extends Fragment implements
     }
 
     public void tampilLokasi(){
-        if (mGoogleApiClient.isConnected()) {
-            Location location = new Location(LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient));
-            double lat = location.getLatitude();
-            double lang = location.getLongitude();
-            List<Address> addressList = null;
+        try {
+            if (mGoogleApiClient.isConnected()) {
+                Location location = new Location(LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient));
+                double lat = location.getLatitude();
+                double lang = location.getLongitude();
+                List<Address> addressList = null;
 
-            Geocoder geocoder = new Geocoder(getActivity());
-            try {
-                addressList = geocoder.getFromLocation(lat, lang, 1);
-            } catch (IOException e) {
-                Toast.makeText(getActivity().getApplicationContext(), "Lokasi tidak ada ", Toast.LENGTH_SHORT).show();
+                Geocoder geocoder = new Geocoder(getActivity());
+                try {
+                    addressList = geocoder.getFromLocation(lat, lang, 1);
+                } catch (IOException e) {
+//                    Toast.makeText(getActivity().getApplicationContext(), "Lokasi tidak ada ", Toast.LENGTH_SHORT).show();
+                }
+
+                Address address = addressList.get(0);
+
+                String msg = "Lokasiku di " + address.getSubLocality() + ", " +
+                        address.getThoroughfare() + ", " + address.getSubAdminArea() +
+                        " dengan koordinat lat : " + lat + " dan long : " + lang;
+                Toast.makeText(getActivity().getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
             }
-
-            Address address = addressList.get(0);
-
-            String msg = "Lokasiku di " + address.getSubLocality() + ", " +
-                    address.getThoroughfare() + ", " + address.getSubAdminArea() +
-                    " dengan koordinat lat : " + lat + " dan long : " + lang;
-            Toast.makeText(getActivity().getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-
-        } else {
+        }catch (Exception e){
             Toast.makeText(getActivity().getApplicationContext(), "Tidak ada koneksi", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
