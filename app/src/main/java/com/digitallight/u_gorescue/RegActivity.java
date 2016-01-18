@@ -128,45 +128,4 @@ public class RegActivity extends AppCompatActivity implements View.OnClickListen
         startActivity(intent);
         finish();
     }
-//    public class input extends AsyncTask<String, String, String>{
-//    String success;
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//            pDialog = new ProgressDialog(RegActivity.this);
-//            pDialog.setMessage("Lagi Proses bro...");
-//            pDialog.setIndeterminate(false);
-//            pDialog.show();
-//        }
-//
-//        @Override
-//        protected String doInBackground(String... arg0) {
-//            String nama = editTextName.getText().toString();
-//            String username = editTextUsername.getText().toString();
-//            String password = editTextPassword.getText().toString();
-//            String email = editTextEmail.getText().toString();
-//            String no_identitas = editNoIdentitas.getText().toString();
-//            String nomor_hp = editTextTelepon.getText().toString();
-//
-//            List<NameValuePair> params = new ArrayList<NameValuePair>();
-//            params.add(new BasicNameValuePair("username", username));
-//            params.add(new BasicNameValuePair("password", password));
-//            params.add(new BasicNameValuePair("no_identitas", no_identitas));
-//            params.add(new BasicNameValuePair("nama", nama));
-//            params.add(new BasicNameValuePair("no_hp", nomor_hp));
-//            params.add(new BasicNameValuePair("email", email));
-//            JSONObject json = jParser.makeHttpRequest(url, "POST", params);
-//
-//            try {
-//                success = json.getString("success");
-//
-//            } catch (Exception e) {
-//                Toast.makeText(getApplicationContext(), "Error",
-//                        Toast.LENGTH_LONG).show();
-//            }
-//
-//            return null;
-//        }
-//    }
 }
