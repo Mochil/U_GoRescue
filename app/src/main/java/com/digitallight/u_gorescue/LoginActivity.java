@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void getLogin(){
         //While the app fetched data we are displaying a progress dialog
-        final ProgressDialog loading = ProgressDialog.show(this,"Fetching Data","Please wait...",false,false);
+        final ProgressDialog loading = ProgressDialog.show(this,"Validasi Akun","Tunggu sebentar",false,false);
 
         //Creating a rest adapter
         RestAdapter adapter = new RestAdapter.Builder()
@@ -101,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Berhasil" ,Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this,MainTest.class);
                     startActivity(intent);
+                    finish();
                 }else{
                     Toast.makeText(getApplicationContext(), "Gagal" ,Toast.LENGTH_SHORT).show();
                 }
