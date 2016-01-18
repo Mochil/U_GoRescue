@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.digitallight.u_gorescue.rest.UsersApi;
 import com.google.gson.JsonParser;
 
 import java.io.BufferedReader;
@@ -28,18 +29,19 @@ import butterknife.OnClick;
  * Created by Pena Orange on 06/01/2016.
  */
 public class RegActivity extends AppCompatActivity implements View.OnClickListener{
-    EditText editTextName;
-    EditText editTextUsername;
-    EditText editTextPassword;
-    EditText editNoIdentitas;
-    EditText editTextEmail;
-    EditText editTextTelepon;
+    //Declaring views
+    private String editTextIdUser = null;
+    private EditText editTextUsername;
+    private EditText editTextPassword;
+    private EditText editTextNoIdentitas;
+    private EditText editTextNama;
+    private EditText editTextNomorHp;
+    private EditText editTextEmail;
 
-    JsonParser jParser = new JsonParser();
-    ProgressDialog pDialog;
     private Button buttonRegister;
 
-    public static final String Root_URL = "http://developsalis.esy.es";
+    //This is our root url
+    public static final String ROOT_URL = "http://developsalis.esy.es/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +51,12 @@ public class RegActivity extends AppCompatActivity implements View.OnClickListen
 
         ButterKnife.bind(this);
         //Initializing Views
-        editTextName = (EditText) findViewById(R.id.editTextName);
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextNoIdentitas = (EditText) findViewById(R.id.editTextNoIdentitas);
+        editTextNama = (EditText) findViewById(R.id.editTextNama);
+        editTextNomorHp = (EditText) findViewById(R.id.editTextNomorHp);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editNoIdentitas = (EditText) findViewById(R.id.editNoIdentitas);
-        editTextTelepon = (EditText) findViewById(R.id.editTextTelepon);
 
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
 
@@ -71,21 +73,22 @@ public class RegActivity extends AppCompatActivity implements View.OnClickListen
         //Here we will handle the http request to insert user to mysql db
         //Creating a RestAdapter
         RestAdapter adapter = new RestAdapter.Builder()
-                .setEndpoint(Root_URL) //Setting the Root URL
+                .setEndpoint(ROOT_URL) //Setting the Root URL
                 .build(); //Finally building the adapter
 
         //Creating object for our interface
-        RegisterAPI api = adapter.create(RegisterAPI.class);
+        UsersApi api = adapter.create(UsersApi.class);
 
         //Defining the method insertuser of our interface
         api.insertUser(
                 //Passing the values by getting it from editTexts
-                editTextName.getText().toString(),
+                editTextIdUser,
                 editTextUsername.getText().toString(),
                 editTextPassword.getText().toString(),
+                editTextNoIdentitas.getText().toString(),
+                editTextNama.getText().toString(),
+                editTextNomorHp.getText().toString(),
                 editTextEmail.getText().toString(),
-                editNoIdentitas.getText().toString(),
-                editTextTelepon.getText().toString(),
 
                 //Creating an anonymous callback
                 new Callback<Response>() {
@@ -111,6 +114,8 @@ public class RegActivity extends AppCompatActivity implements View.OnClickListen
 
                         //Displaying the output as a toast
                         Toast.makeText(RegActivity.this, "Berhasil", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(RegActivity.this,MainTest.class);
+                        startActivity(intent);
                     }
 
                     @Override

@@ -103,14 +103,14 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }else{
-                    Toast.makeText(getApplicationContext(), "Gagal" ,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Gagal",Toast.LENGTH_LONG).show();
                 }
 
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                Toast.makeText(LoginActivity.this, "Gagal",Toast.LENGTH_LONG).show();
             }
         });
     }
