@@ -102,14 +102,14 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this,MainTest.class);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(getApplicationContext(), "Gagal" ,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Gagal",Toast.LENGTH_LONG).show();
                 }
 
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                Toast.makeText(LoginActivity.this, "Gagal",Toast.LENGTH_LONG).show();
             }
         });
     }
