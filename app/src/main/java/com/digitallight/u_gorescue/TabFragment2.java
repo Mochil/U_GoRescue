@@ -102,11 +102,4 @@ public class TabFragment2 extends Fragment{
         if (null != mMapView)
             mMapView.onLowMemory();
     }
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//
-//        View Mmap = inflater.inflate(R.layout.activity_maps, container, false);
-//        return Mmap;
-//    }
 }
