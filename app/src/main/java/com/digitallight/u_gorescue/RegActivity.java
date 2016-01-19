@@ -114,8 +114,9 @@ public class RegActivity extends AppCompatActivity implements View.OnClickListen
 
                         //Displaying the output as a toast
                         Toast.makeText(RegActivity.this, "Berhasil", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(RegActivity.this,MainTest.class);
+                        Intent intent = new Intent(RegActivity.this,LoginActivity.class);
                         startActivity(intent);
+                        finish();
                     }
 
                     @Override

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
         et1 = (EditText) findViewById(R.id.editText);
         et2 = (EditText) findViewById(R.id.editText2);
         et3 = (TextView) findViewById(R.id.TextBelumDaftar);
-        Toast.makeText(getApplicationContext(), "user001 || user1234", Toast.LENGTH_SHORT).show();
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,5 +113,20 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Gagal",Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    long lastPress;
+    @Override
+    public void onBackPressed() {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastPress > 5000){
+            Toast.makeText(getBaseContext(),"Tekan lagi untuk keluar",Toast.LENGTH_LONG).show();
+            lastPress = currentTime;
+        }else{
+            super.onBackPressed();
+            Log.i(getClass()+"","keluar dari aplikasi");
+            finish();
+            System.exit(0);
+        }
     }
 }
