@@ -10,13 +10,21 @@
     android:background="#FFDA0642"
     tools:context="com.digitallight.u_gorescue.LoginActivity">
 
-    <TextView android:text="GO-RESCUE" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textview"
-        android:textSize="35dp"
+    <!--<TextView android:text="GO-RESCUE" android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/textview"-->
+        <!--android:textSize="35dp"-->
+        <!--android:layout_above="@+id/editText"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:textColor="#ffffff" />-->
+
+    <ImageView
+        android:src="@mipmap/ic_launcher1"
+        android:layout_width="250px"
+        android:layout_height="250px"
+        android:layout_centerInParent="true"
         android:layout_above="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:textColor="#ffffff" />
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -32,6 +40,7 @@
         android:layout_alignRight="@+id/editText2"
         android:layout_alignEnd="@+id/editText2"
         android:textColor= "@color/putih"/>
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,6 +55,24 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/password"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/prompt_password"-->
+            <!--android:imeActionId="@+id/login"-->
+            <!--android:imeActionLabel="@string/action_sign_in_short"-->
+            <!--android:imeOptions="actionUnspecified"-->
+            <!--android:inputType="textPassword"-->
+            <!--android:maxLines="1"-->
+            <!--android:singleLine="true" />-->
+
+    <!--</android.support.design.widget.TextInputLayout>-->
 
     <Button
         android:layout_width="wrap_content"

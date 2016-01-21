@@ -60,59 +60,59 @@ public class LoginActivity extends AppCompatActivity {
 
     private void getLogin(){
         //While the app fetched data we are displaying a progress dialog
-        final ProgressDialog loading = ProgressDialog.show(this,"Validasi Akun","Tunggu sebentar",false,false);
+//        final ProgressDialog loading = ProgressDialog.show(this,"Validasi Akun","Tunggu sebentar",false,false);
 
-        //Creating a rest adapter
-        RestAdapter adapter = new RestAdapter.Builder()
-                .setEndpoint(ROOT_URL)
-                .build();
-
-        //Creating an object of our api interface
-        UsersApi api = adapter.create(UsersApi.class);
-
-        //Defining the method
-        api.getBooks(new Callback<List<User>>() {
-            @Override
-            public void success(List<User> list, Response response) {
-                //Dismissing the loading progressbar
-                loading.dismiss();
-
-                //Storing the data in our list
-                users = list;
-
-                boolean hasilValidasi = false;
-
-                String[] items = new String[users.size()];
-                String username = et1.getText().toString().trim();
-                String password = et2.getText().toString().trim();
-
-                //Traversing through the whole list to get all the names
-                for(int i=0; i<users.size(); i++){
-                    //Storing names to string array
-                    if (users.get(i).getUsername().equals(username) && users.get(i).getPassword().equals(password)) {
-                        hasilValidasi = true;
-                        break;
-                    }else{
-                        hasilValidasi = false;
-                    }
-                }
-
-                if (hasilValidasi == true) {
+//        //Creating a rest adapter
+//        RestAdapter adapter = new RestAdapter.Builder()
+//                .setEndpoint(ROOT_URL)
+//                .build();
+//
+//        //Creating an object of our api interface
+//        UsersApi api = adapter.create(UsersApi.class);
+//
+//        //Defining the method
+//        api.getBooks(new Callback<List<User>>() {
+//            @Override
+//            public void success(List<User> list, Response response) {
+//                //Dismissing the loading progressbar
+//                loading.dismiss();
+//
+//                //Storing the data in our list
+//                users = list;
+//
+//                boolean hasilValidasi = false;
+//
+//                String[] items = new String[users.size()];
+//                String username = et1.getText().toString().trim();
+//                String password = et2.getText().toString().trim();
+//
+//                //Traversing through the whole list to get all the names
+//                for(int i=0; i<users.size(); i++){
+//                    //Storing names to string array
+//                    if (users.get(i).getUsername().equals(username) && users.get(i).getPassword().equals(password)) {
+//                        hasilValidasi = true;
+//                        break;
+//                    }else{
+//                        hasilValidasi = false;
+//                    }
+//                }
+//
+//                if (hasilValidasi == true) {
                     Toast.makeText(getApplicationContext(), "Berhasil" ,Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this,MainTest.class);
                     startActivity(intent);
                     finish();
-                }else{
-                    Toast.makeText(LoginActivity.this, "Gagal",Toast.LENGTH_LONG).show();
-                }
-
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Toast.makeText(LoginActivity.this, "Gagal",Toast.LENGTH_LONG).show();
-            }
-        });
+//                }else{
+//                    Toast.makeText(LoginActivity.this, "Gagal",Toast.LENGTH_LONG).show();
+//                }
+//
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                Toast.makeText(LoginActivity.this, "Gagal",Toast.LENGTH_LONG).show();
+//            }
+//        });
     }
 
     long lastPress;

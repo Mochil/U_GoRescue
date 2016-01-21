@@ -27,7 +27,10 @@ import com.google.android.gms.maps.UiSettings;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -35,8 +38,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class TabFragment1 extends Fragment implements
-        GoogleApiClient.OnConnectionFailedListener,
-        View.OnClickListener, View.OnLongClickListener {
+        GoogleApiClient.OnConnectionFailedListener, View.OnLongClickListener {
 
     //Root URL of our web service
     public static final String ROOT_URL = "http://developsalis.esy.es/";
@@ -65,14 +67,14 @@ public class TabFragment1 extends Fragment implements
         return pangdar;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.pdButton:
-                tampilLokasi();
-                break;
-        }
-    }
+//    @Override
+//    public void onClick(View v) {
+//        switch (v.getId()){
+//            case R.id.pdButton:
+//                tampilLokasi();
+//                break;
+//        }
+//    }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
@@ -102,22 +104,22 @@ public class TabFragment1 extends Fragment implements
                 RestAdapter adapter = new RestAdapter.Builder()
                         .setEndpoint(ROOT_URL) //Setting the Root URL
                         .build(); //Finally building the adapter
-
-                //Creating object for our interface
+//
+//                //Creating object for our interface
                 PangdarApi api = adapter.create(PangdarApi.class);
-
-                //Defining the method insertuser of our interface
-
+//
+//                //Defining the method insertuser of our interface
+//
                 String idPanggilanDarurat;
                 String tanggal;
                 String sopir;
                 String user;
 
                 api.insertPangdar(
-                        //Passing the values by getting it from editTexts
-
+//                        //Passing the values by getting it from editTexts
+//
                         idPanggilanDarurat = null,
-                        tanggal = "2016-01-19",
+                        tanggal = getDateTime(),
                         lat,
                         lang,
                         address.getSubLocality(),
@@ -144,7 +146,7 @@ public class TabFragment1 extends Fragment implements
 
                                     //Reading the output in the string
                                     output = reader.readLine();
-//                                    Toast.makeText(RegActivity.this, output, Toast.LENGTH_LONG).show();
+//                                    Toast.makeText(getActivity(), output, Toast.LENGTH_LONG).show();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -154,7 +156,7 @@ public class TabFragment1 extends Fragment implements
                             @Override
                             public void failure(RetrofitError error) {
                                 //If any error occured displaying the error as toast
-//                                Toast.makeText(RegActivity.this, "Gagal",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), "Gagal",Toast.LENGTH_LONG).show();
                             }
                         }
                 );
@@ -162,13 +164,13 @@ public class TabFragment1 extends Fragment implements
 
                 /*==================================*/
 
-//                String msg = "Lokasiku di " + address.getSubLocality() + ", " +
+//                String msg = "tanggal" + getDateTime()+"Lokasiku di " + address.getSubLocality() + ", " +
 //                        address.getThoroughfare() + ", " + address.getSubAdminArea() +
 //                        " dengan koordinat lat : " + lat + " dan long : " + lang;
-//                Toast.makeText(getActivity().getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "Panggilan Darurat telah dikirim", Toast.LENGTH_SHORT).show();
             }
         }catch (Exception e){
-            Toast.makeText(getActivity().getApplicationContext(), "Tidak ada koneksi", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity().getApplicationContext(), "Panggilan Darurat gagal dikirim,Tidak ada koneksi", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -186,5 +188,12 @@ public class TabFragment1 extends Fragment implements
     public boolean onLongClick(View v) {
         tampilLokasi();
         return false;
+    }
+
+    private String getDateTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 }
