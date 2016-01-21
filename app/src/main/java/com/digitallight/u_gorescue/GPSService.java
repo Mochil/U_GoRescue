@@ -65,7 +65,6 @@ public class GPSService extends Service implements LocationListener {
      */
     public Location getLocation() {
         try {
-
             // Getting GPS status
             isGPSEnabled = mLocationManager
                     .isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -73,18 +72,27 @@ public class GPSService extends Service implements LocationListener {
             // If GPS enabled, get latitude/longitude using GPS Services
             if (isGPSEnabled) {
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    mLocationManager.requestLocationUpdates(
-                            LocationManager.GPS_PROVIDER, TIME, DISTANCE, this);
-                    if (mLocationManager != null) {
-                        mLocation = mLocationManager
-                                .getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                        if (mLocation != null) {
-                            mLatitude = mLocation.getLatitude();
-                            mLongitude = mLocation.getLongitude();
-                            isLocationAvailable = true; // setting a flag that
-                            // location is available
-                            return mLocation;
-                        }
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return null;
+                }
+
+                mLocationManager.requestLocationUpdates(
+                        LocationManager.GPS_PROVIDER, TIME, DISTANCE, this);
+                if (mLocationManager != null) {
+                    mLocation = mLocationManager
+                            .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    if (mLocation != null) {
+                        mLatitude = mLocation.getLatitude();
+                        mLongitude = mLocation.getLongitude();
+                        isLocationAvailable = true; // setting a flag that
+                        // location is available
+                        return mLocation;
                     }
                 }
             }
@@ -228,15 +236,15 @@ public class GPSService extends Service implements LocationListener {
         AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(mContext);
 
         // Setting Dialog Title
-        mAlertDialog.setTitle("Location not available, Open GPS?")
-                .setMessage("Activate GPS to use use location services?")
-                .setPositiveButton("Open Settings", new DialogInterface.OnClickListener() {
+        mAlertDialog.setTitle("Lokasi tidak ditemukan, Aktifkan GPS?")
+                .setMessage("Aktifkan GPS untuk menggunakan layanan share lokasi?")
+                .setPositiveButton("Buka Pengaturan", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                         mContext.startActivity(intent);
                     }
                 })
-                .setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+                .setNegativeButton("Batalkan",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
